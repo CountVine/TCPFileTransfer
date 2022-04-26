@@ -1,7 +1,8 @@
-import QtQuick
-import QtQuick.Controls
-import QtQuick.Layouts
-import QtQuick.Dialogs
+import QtQuick 2.5
+import QtQuick.Window 2.2
+import QtQuick.Controls 2.1
+import QtQuick.Layouts 1.1
+import QtQuick.Dialogs 1.2
 
 Window {
     width: 640
@@ -9,10 +10,12 @@ Window {
     visible: true
     title: qsTr("Client")
 
+    SystemPalette { id: mainPalette; colorGroup: SystemPalette.Active }
+
     FileDialog {
         id: fileDialog
         onAccepted: {
-            img_clnt.sendImage(fileDialog.currentFile)
+            img_clnt.sendImage(fileDialog.fileUrl)
         }
     }
 
@@ -30,12 +33,9 @@ Window {
             id: ipTextInput1
             text: "127"
             overwriteMode: true
-            validator: RegularExpressionValidator {
-                regularExpression: /^([01]?[0-9]?[0-9]|2([0-4][0-9]|5[0-5]))$/
-            }
 
             background: Rectangle {
-                color: parent.palette.dark
+                color: mainPalette.dark
             }
         }
 
@@ -47,12 +47,9 @@ Window {
             id: ipTextInput2
             text: "0"
             overwriteMode: true
-            validator: RegularExpressionValidator {
-                regularExpression: /^([01]?[0-9]?[0-9]|2([0-4][0-9]|5[0-5]))$/
-            }
 
             background: Rectangle {
-                color: parent.palette.dark
+                color: mainPalette.dark
             }
         }
 
@@ -64,12 +61,9 @@ Window {
             id: ipTextInput3
             text: "0"
             overwriteMode: true
-            validator: RegularExpressionValidator {
-                regularExpression: /^([01]?[0-9]?[0-9]|2([0-4][0-9]|5[0-5]))$/
-            }
 
             background: Rectangle {
-                color: parent.palette.dark
+                color: mainPalette.dark
             }
         }
 
@@ -81,12 +75,9 @@ Window {
             id: ipTextInput4
             text: "1"
             overwriteMode: true
-            validator: RegularExpressionValidator {
-                regularExpression: /^([01]?[0-9]?[0-9]|2([0-4][0-9]|5[0-5]))$/
-            }
 
             background: Rectangle {
-                color: parent.palette.dark
+                color: mainPalette.dark
             }
         }
         Item {
@@ -114,12 +105,9 @@ Window {
                 anchors.bottom: parent.bottom
                 text: "13500"
                 overwriteMode: true
-                validator: RegularExpressionValidator {
-                    regularExpression: /^([01]?[0-9]?[0-9]|2([0-4][0-9]|5[0-5]))$/
-                }
 
                 background: Rectangle {
-                    color: parent.palette.dark
+                    color: mainPalette.dark
                 }
             }
         }
@@ -184,11 +172,11 @@ Window {
             Connections {
                 target: img_clnt
 
-                function onDisconnected() {
+                onDisconnected: {
                     statusDiode.color = "red"
                 }
 
-                function onConnected() {
+                onConnected: {
                     statusDiode.color = "green"
                 }
             }

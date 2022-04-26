@@ -1,4 +1,4 @@
-QT += quick network
+QT += quick network gui
 
 SOURCES += \
         main.cpp \
@@ -28,3 +28,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 HEADERS += \
     server.h \
     serverimageprovider.h
+
+DISTFILES += \
+    main.qml

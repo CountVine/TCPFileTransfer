@@ -8,6 +8,7 @@
 #include <QByteArray>
 #include <QVariant>
 #include <QUrl>
+#include <QHostAddress>
 
 class Client : public QObject
 {

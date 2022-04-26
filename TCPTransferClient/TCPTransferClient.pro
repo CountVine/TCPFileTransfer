@@ -1,4 +1,4 @@
-QT += quick network
+QT += quick network gui
 
 SOURCES += \
         client.cpp \
@@ -26,3 +26,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     client.h
+
+DISTFILES += \
+    main.qml

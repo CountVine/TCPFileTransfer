@@ -6,6 +6,7 @@
 #include <QTcpSocket>
 #include <QDataStream>
 #include <QImage>
+#include <QHostAddress>
 
 #include <serverimageprovider.h>
 

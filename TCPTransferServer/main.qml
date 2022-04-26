@@ -1,12 +1,15 @@
-import QtQuick
-import QtQuick.Controls
-import QtQuick.Layouts
+import QtQuick 2.5
+import QtQuick.Window 2.2
+import QtQuick.Controls 2.1
+import QtQuick.Layouts 1.1
 
 Window {
     width: 640
     height: 480
     visible: true
     title: qsTr("Server")
+
+    SystemPalette { id: mainPalette; colorGroup: SystemPalette.Active }
 
     RowLayout {
         id: ipAddressRow
@@ -22,12 +25,9 @@ Window {
             id: ipTextInput1
             text: "127"
             overwriteMode: true
-            validator: RegularExpressionValidator {
-                regularExpression: /^([01]?[0-9]?[0-9]|2([0-4][0-9]|5[0-5]))$/
-            }
 
             background: Rectangle {
-                color: parent.palette.dark
+                color: mainPalette.dark
             }
         }
 
@@ -39,12 +39,9 @@ Window {
             id: ipTextInput2
             text: "0"
             overwriteMode: true
-            validator: RegularExpressionValidator {
-                regularExpression: /^([01]?[0-9]?[0-9]|2([0-4][0-9]|5[0-5]))$/
-            }
 
             background: Rectangle {
-                color: parent.palette.dark
+                color: mainPalette.dark
             }
         }
 
@@ -56,12 +53,9 @@ Window {
             id: ipTextInput3
             text: "0"
             overwriteMode: true
-            validator: RegularExpressionValidator {
-                regularExpression: /^([01]?[0-9]?[0-9]|2([0-4][0-9]|5[0-5]))$/
-            }
 
             background: Rectangle {
-                color: parent.palette.dark
+                color: mainPalette.dark
             }
         }
 
@@ -73,12 +67,9 @@ Window {
             id: ipTextInput4
             text: "1"
             overwriteMode: true
-            validator: RegularExpressionValidator {
-                regularExpression: /^([01]?[0-9]?[0-9]|2([0-4][0-9]|5[0-5]))$/
-            }
 
             background: Rectangle {
-                color: parent.palette.dark
+                color: mainPalette.dark
             }
         }
         Item {
@@ -106,12 +97,9 @@ Window {
                 anchors.bottom: parent.bottom
                 text: "13500"
                 overwriteMode: true
-                validator: RegularExpressionValidator {
-                    regularExpression: /^([01]?[0-9]?[0-9]|2([0-4][0-9]|5[0-5]))$/
-                }
 
                 background: Rectangle {
-                    color: parent.palette.dark
+                    color: mainPalette.dark
                 }
             }
         }
@@ -129,7 +117,7 @@ Window {
 
         Connections {
             target: img_srv
-            function onImageUpdated() {
+            onImageUpdated: {
                 imageView.source = imageView.source.toString() === "image://server_provider/first" ? "image://server_provider/second" : "image://server_provider/first"
             }
         }
@@ -184,15 +172,15 @@ Window {
             Connections {
                 target: img_srv
 
-                function onWaiting() {
+                onWaiting: {
                     statusDiode.color = "yellow"
                 }
 
-                function onConnected() {
+                onConnected: {
                     statusDiode.color = "green"
                 }
 
-                function onStopped() {
+                onStopped: {
                     statusDiode.color = "red"
                 }
             }

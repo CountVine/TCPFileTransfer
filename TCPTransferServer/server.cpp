@@ -46,7 +46,7 @@ void Server::connectionReceived()
 void Server::readImage()
 {
     QDataStream imageStream(tcpSocket);
-    imageStream.setVersion(QDataStream::Qt_6_2);
+    imageStream.setVersion(QDataStream::Qt_5_8);
 
     if ( 0 == imageSize ) {
         if ( tcpSocket->bytesAvailable() < (int)sizeof(qint64) + (int)sizeof(qint32)*3 ){

@@ -1,5 +1,0 @@
-<!DOCTYPE RCC><RCC version="1.0">
-<qresource prefix="/TCPTransferServer">
-<file alias="main.qml">C:/Users/CountVine/Documents/TCPTransferServer/main.qml</file>
-</qresource>
-</RCC>
